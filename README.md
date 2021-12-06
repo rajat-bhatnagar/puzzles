@@ -3,3 +3,4 @@
   - SquaresOfASortedArray
   - TwoSum
   - DuplicateZeros
+  - MergeSortedArray
