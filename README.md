@@ -1,0 +1,5 @@
+- Arrays
+  - CountNumberOfDigits
+  - SquaresOfASortedArray
+  - TwoSum
+  - DuplicateZeros
