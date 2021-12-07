@@ -5,6 +5,15 @@ public class Dronacharya {
         int[] numbers = {-2, -1, 0, 3, 4, 6, 9};
         System.out.println("Sorted Array O(n log (n)) - " + Arrays.toString(numbers) + " after method call- " + Arrays.toString(sortIntArr(numbers)));
         System.out.println("Sorted Array O(n) - " + Arrays.toString(numbers) + " after method call- " + Arrays.toString(sortIntArrayUsingRightAndLeftPointers(numbers)));
+
+        // delete last element from numbers
+        int[] result = deleteFirstElementFromIntArray(numbers);
+        System.out.println(" After Deletion " +Arrays.toString(result));
+        System.out.println("Length : "+result.length);
+    }
+
+    private static int[] deleteFirstElementFromIntArray(int[] numbers) {
+        return Arrays.copyOfRange(numbers, 1, numbers.length);
     }
 
     private static int[] sortIntArr(int[] numbers) {
