@@ -24,8 +24,34 @@ public class AverageOfSubarrayOfSizeK {
         return result;
     }
 
+    /*
+     * arr = {1, 2, 3, 4}
+     * k = 2
+     * {1+2/2, 2+3/2, 3+4/2}
+     * {1.5, 2.5, 3.5}
+     */
+
+    // Time complexity of this approach using Sliding Window Pattern is O (n)
+    public static double[] findAveragesForSubarrayOfSizeK(int k, int[] arr) {
+        double[] result = new double[arr.length - k + 1];
+        double windowSum = 0;
+        int windowStart = 0;
+        for (int windowEnd = 0; windowEnd < arr.length; windowEnd++) {
+            windowSum += arr[windowEnd]; // add the next element
+            // Slide the window - We do not need to slide if we have hit the required window size of 'k'
+            if (windowEnd >= k - 1) {
+                result[windowStart] = windowSum / k; // calculate the average
+                windowSum -= arr[windowStart]; // subtract the element going out
+                windowStart++; // Slide the window ahead
+            }
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
-        System.out.println("k = 2 , arr = {1, 2, 3, 4} " + Arrays.toString(findAveragesForSubarrayOfSizeKUsingBruteForce(2, new int[]{1, 2, 3, 4})));
-        System.out.println("k = 2 , arr = {1, 2} " + Arrays.toString(findAveragesForSubarrayOfSizeKUsingBruteForce(2, new int[]{1, 2})));
+        System.out.println("Brute Force Approach : k = 2 , arr = {1, 2, 3, 4} " + Arrays.toString(findAveragesForSubarrayOfSizeKUsingBruteForce(2, new int[]{1, 2, 3, 4})));
+        System.out.println("Sliding Window Approach : k = 2 , arr = {1, 2, 3, 4} " + Arrays.toString(findAveragesForSubarrayOfSizeK(2, new int[]{1, 2, 3, 4})));
+        System.out.println("Brute Force Approach :k = 2 , arr = {1, 2} " + Arrays.toString(findAveragesForSubarrayOfSizeKUsingBruteForce(2, new int[]{1, 2})));
+        System.out.println("Sliding Window Approach : k = 2 , arr = {1, 2} " + Arrays.toString(findAveragesForSubarrayOfSizeK(2, new int[]{1, 2})));
     }
 }
